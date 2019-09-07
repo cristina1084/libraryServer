@@ -1,0 +1,28 @@
+{
+  "name": "libraryexpress",
+  "version": "1.0.0",
+  "description": "library web application using Node, Express and MongoDB",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "ejs": "^2.6.2",
+    "mongoose": "^5.6.9",
+    "multer": "^1.4.2",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristina1084/libraryexpress.git"
+  },
+  "author": "Cristina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristina1084/libraryexpress/issues"
+  },
+  "homepage": "https://github.com/cristina1084/libraryexpress#readme"
+}

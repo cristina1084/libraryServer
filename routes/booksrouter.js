@@ -29,17 +29,13 @@ router.get("/getbooks",(req,res)=>{
 
 
 router.post("/add", upload, (req,res)=>{
-    var b1 = new books();
-    b1.bookTitle = req.body.bookTitle;
-    b1.author = req.body.author;
-    b1.genre = req.body.genre;
-    b1.description = req.body.description;
-    b1.price = req.body.price;
-    // b1.urlToImage = req.file.filename;
-    b1.save((err)=>{
-        if (err) throw err;
-        else res.send({msg:"Added"});
-    })
+    if(req.body.bookTitle!=undefined){
+        var b1 = new books(req.body);
+        b1.save((err)=>{
+            if (err) throw err;
+            else res.send({msg:"Added"});
+        });
+    }
 })
 
 router.get("/view/:img",(req,res)=>{        //image controller
@@ -48,8 +44,6 @@ router.get("/view/:img",(req,res)=>{        //image controller
 
 
 router.post("/edit", upload, (req,res)=>{
-    console.log(req.body.file);
-    
     books.updateOne({bookTitle:req.body.bookTitle} ,{$set:{
         bookTitle:req.body.bookTitle,
         author : req.body.author,
@@ -77,13 +71,9 @@ router.get("/delete/:bid",(req,res)=>{
 })
 
 router.get("/:id",(req,res)=>{
-    console.log(req.params.id);
     books.find({bookTitle:req.params.id},(err,result)=>{
         if (err) throw err;
-        else{
-            console.log(result);
-            res.send(result[0]);
-        }
+        else res.send(result[0]);
     })
 })
 

@@ -6,29 +6,16 @@ router.use(bodyparser.json());
 
 var user = require('../model/usersmodel');
 
-router.get("/",(req,res)=>{
-    res.render(
-        "login",
-        {
-            pageTitle:"Library",
-            nav:[
-                {link:"/signup", title:"Sign Up"},
-                {link:"/", title:"Login"}
-            ]
-        }
-    )
-})
-
 router.post("/",(req,res)=>{
-    user.find({username:req.body.uname, password:req.body.pwd},(err,result)=>{
+    user.find({username:req.body.username, password:req.body.password},(err,result)=>{
         if (err) throw err;
         else{
             console.log(result.length);
             if(result.length!=0)
-                res.redirect("/index");
+                res.send({found:true})
                 
             else
-                res.redirect("/login");
+                res.send({found:false})
         }
     })
     

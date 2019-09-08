@@ -5,33 +5,25 @@ var bodyparser = require('body-parser');
 router.use(bodyparser.urlencoded({extended:true}));
 router.use(bodyparser.json());
 
-router.get("/",(req,res)=>{
-    res.render(
-        "signup",
-        {
-            pageTitle:"Library",
-            nav:[
-                {link:"/signup", title:"Sign Up"},
-                {link:"/login", title:"Login"}
-            ]
-        })
-})
-
 router.post("/",(req,res)=>{
-    var u1 = new user();
-    u1.name = req.body.name;
-    u1.email = req.body.email;
-    u1.mobile = req.body.mobile;
-    u1.role = req.body.role;
-    u1.username = req.body.username;
-    u1.password = req.body.password;
+    var u1 = new user(req.body);
     u1.save((err)=>{
         if (err) throw err;
-        else{
-            console.log("Data added");
-            res.redirect("/login");
-        }
+        else res.send({msg:"User Created"});
     })
 })
 
+router.get("/:uid",(req,res)=>{
+    user.find({username:req.params.uid},(err,result)=>{
+        if (err) throw err;
+        else{
+            console.log(result.length);
+            if(result.length!=0)
+                res.send({found:true})
+                
+            else
+                res.send({found:false})
+        }
+    })
+})
 module.exports = router;

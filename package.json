@@ -1,5 +1,5 @@
 {
-  "name": "libraryexpress",
+  "name": "libraryserver",
   "version": "1.0.0",
   "description": "library web application using Node, Express and MongoDB",
   "main": "app.js",
@@ -17,12 +17,12 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cristina1084/libraryexpress.git"
+    "url": "git+https://github.com/cristina1084/libraryServer.git"
   },
   "author": "Cristina",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cristina1084/libraryexpress/issues"
+    "url": "https://github.com/cristina1084/libraryServer/issues"
   },
-  "homepage": "https://github.com/cristina1084/libraryexpress#readme"
+  "homepage": "https://github.com/cristina1084/libraryServer#readme"
 }
